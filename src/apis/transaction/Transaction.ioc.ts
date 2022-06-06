@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
 import {
-  ITransaction, TGetTransaction
+  ITransaction, TCreateTransaction, TGetTransaction
 } from './Transaction.data';
 
 export const TRANSACTION_TYPES = {
@@ -18,6 +18,11 @@ export interface ITransactionRouter {
 }
 
 export interface ITransactionValidator {
+  create: (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => Promise<void>;
   getTransaction: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 }
 
@@ -36,13 +41,13 @@ export interface ITransactionController {
 }
 
 export interface ITransactionService {
-  create: () => Promise<ITransaction>;
-  getTransaction: (data: TGetTransaction) => Promise<ITransaction>;
+  create: (data: TCreateTransaction) => Promise<ITransaction>;
+  getTransaction: (data: TGetTransaction) => Promise<ITransaction | null>;
   getTransactions: () => Promise<ITransaction[]>;
 }
 
 export interface ITransactionDao {
-  create: () => Promise<ITransaction>;
-  findById: (id: number) => Promise<ITransaction>;
+  create: (data: TCreateTransaction) => Promise<ITransaction>;
+  findById: (id: number) => Promise<ITransaction | null>;
   find: () => Promise<ITransaction[]>;
 }

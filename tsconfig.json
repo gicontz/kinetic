@@ -1,22 +1,10 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "newLine": "lf",
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "pretty": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "target": "ES6",
-    "types": ["node", "reflect-metadata"]
-  }
+    "outDir": "build",
+    "rootDir": "src"
+  },
+  "include": [
+    "./src"
+  ]
 }

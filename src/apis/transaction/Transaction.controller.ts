@@ -11,7 +11,8 @@ import {
 
 import {
   TGetTransaction,
-  ITransaction
+  ITransaction,
+  TCreateTransaction
 } from './Transaction.data';
 
 @injectable()
@@ -31,7 +32,8 @@ export default class TransactionController implements ITransactionController {
     next: NextFunction,
   ) => {
     try {
-      const data = await this.transactionService.create();
+      const { validatedData } = req as IValidatedRequest<TCreateTransaction>;
+      const data = await this.transactionService.create(validatedData);
 
       res.status(200).json({
         ...data

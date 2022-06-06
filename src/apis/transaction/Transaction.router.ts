@@ -35,7 +35,7 @@ export default class TransactionRouter implements ITransactionRouter {
 
   private initRoutes = () => {
     this.router.post(
-      `${this.path}/create`,
+      `${this.path}`,
       this.transactionController.create,
     );
 

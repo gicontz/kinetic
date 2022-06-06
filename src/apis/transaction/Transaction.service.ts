@@ -10,6 +10,7 @@ import {
 
 import {
   TGetTransaction,
+  TCreateTransaction,
   ITransaction
 } from './Transaction.data';
 
@@ -21,8 +22,8 @@ export default class TransactionService implements ITransactionService {
     this.transactionDao = transactionDao;
   }
 
-  public create = async () => {
-    const transaction = this.transactionDao.create();
+  public create = async (data: TCreateTransaction) => {
+    const transaction = this.transactionDao.create(data);
     return transaction;
   };
 
