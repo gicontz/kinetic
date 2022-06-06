@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "jest",
+      "node",
+      "reflect-metadata"
+    ]
+  },
+  "include": [
+    "./src",
+    "./__tests__"
+  ]
+}
