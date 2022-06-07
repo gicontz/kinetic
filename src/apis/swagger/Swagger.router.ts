@@ -11,7 +11,7 @@ const swaggerDefinition = {
   openapi: '3.0.0',
   components: {},
   info: {
-    title: 'DevFense MCGI Free Store Server',
+    title: 'Kinetic Server',
     version: '0.1.0',
   },
   servers: [
