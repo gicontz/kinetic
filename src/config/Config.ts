@@ -30,6 +30,7 @@ const NODE_ENV: string = process.env.NODE_ENV as string;
 const app = {
   PORT: parseInt(process.env.PORT as string, 10),
   BASE_URL: baseUrl,
+  WHITELIST: (process.env.WHITELIST as string).split(',') as Array<string>,
 };
 
 const db = {
