@@ -8,22 +8,21 @@ import {
   ITransactionDao,
 } from './Transaction.ioc';
 
-import {
-  TGetTransaction,
-  TCreateTransaction,
-  ITransaction
-} from './Transaction.data';
+import { TGetTransaction, TCreateTransaction } from './Transaction.data';
 
 @injectable()
 export default class TransactionService implements ITransactionService {
   private transactionDao: ITransactionDao;
 
-  constructor(@inject(TRANSACTION_TYPES.iTransactionDao) transactionDao: ITransactionDao) {
+  constructor(
+    @inject(TRANSACTION_TYPES.iTransactionDao) transactionDao: ITransactionDao,
+  ) {
     this.transactionDao = transactionDao;
   }
 
   public create = async (data: TCreateTransaction) => {
-    const transaction = this.transactionDao.create(data);
+    const transaction = await this.transactionDao.create(data);
+    
     return transaction;
   };
 

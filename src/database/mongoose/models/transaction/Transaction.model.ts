@@ -11,9 +11,10 @@ const transactionSchema = new Schema<ITransactionDocument>(
     transactionId: {
       type: Number,
       required: true,
+      unique: true,
     },
     date: {
-      type: String,
+      type: Date,
       required: true,
     },
     customerId: {
@@ -36,4 +37,8 @@ const transactionSchema = new Schema<ITransactionDocument>(
   },
 );
 
-export default model<ITransactionDocument, TTransactionModel>('transaction', transactionSchema, 'transaction');
+export default model<ITransactionDocument, TTransactionModel>(
+  'transaction',
+  transactionSchema,
+  'transaction',
+);

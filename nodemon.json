@@ -1,7 +1,6 @@
 {
   "watch": [
     ".",
-    "./src/",
     ".env"
   ],
   "ignore": [
@@ -10,5 +9,5 @@
     "build/"
   ],
   "ext": "js jsx ts tsx yaml",
-  "exec": "ts-node -r tsconfig-paths/register ./src/Server.ts"
+  "exec": "ts-node -r tsconfig-paths/register --files"
 }

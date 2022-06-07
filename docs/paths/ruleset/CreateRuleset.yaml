@@ -1,0 +1,53 @@
+paths:
+  /ruleset:
+    post:
+      tags:
+        - Ruleset
+      summary: Creates a new transaction entry.
+      description: |
+        This will create a new transaction entry.
+      security:
+        - CookieAuth: []
+      requestBody:
+        description: The data needed to create an transaction entry.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  description: Cashback Rule start date
+                  type: string
+                endDate:
+                  description: Cashback Rule end date
+                  type: string
+                cashback:
+                  description: Cashback Percentage Value
+                  type: number
+                  required: true
+                  example: 1
+                redemptionLimit:
+                  description: Number of Transaction Available
+                  type: number
+
+      responses:
+        201:
+          description: Ruleset successfully created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The message associated with this response.
+                    type: string
+                    example: Ruleset successfully created.
+        400:
+          $ref: '#/components/responses/BadRequestError'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        409:
+          $ref: '#/components/responses/ConflictError'
+        500:
+          $ref: '#/components/responses/InternalServerError'

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "yarn": "yarn",
-    "start": "nodemon",
+    "start": "nodemon -L ./src/Server.ts",
     "start-production": "node -r ./tsconfig-paths-bootstrap.js ./build/Server.js",
     "build": "rimraf build && tsc",
     "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx --max-warnings=0 --color .",
@@ -15,8 +15,11 @@
     "pre-commit": "yarn run lint --fix && yarn run test-clear && yarn run test-coverage"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "immutability-helper": "^3.1.1",
     "inversify": "^5.0.5",
     "joi": "^17.4.0",
     "mongoose": "^5.11.18",

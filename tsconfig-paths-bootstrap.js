@@ -1,5 +1,5 @@
 const tsConfigPaths = require('tsconfig-paths');
-const tsConfig = require('./tsconfig.base');
+const tsConfig = require('./tsconfig');
 
 const { baseUrl, paths } = tsConfig.compilerOptions;
 Object.keys(paths).forEach((key) => {

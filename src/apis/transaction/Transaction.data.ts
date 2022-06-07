@@ -6,8 +6,8 @@ export interface ITransaction {
 export type TCreateTransaction = {
   id: number;
   date: Date;
-}
+};
 
 export type TGetTransaction = {
   id: number;
-}
+};

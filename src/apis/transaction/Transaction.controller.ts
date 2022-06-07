@@ -9,11 +9,7 @@ import {
   TRANSACTION_TYPES,
 } from './Transaction.ioc';
 
-import {
-  TGetTransaction,
-  ITransaction,
-  TCreateTransaction
-} from './Transaction.data';
+import { TGetTransaction, TCreateTransaction } from './Transaction.data';
 
 @injectable()
 export default class TransactionController implements ITransactionController {
@@ -26,23 +22,19 @@ export default class TransactionController implements ITransactionController {
     this.transactionService = transactionService;
   }
 
-  public create = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { validatedData } = req as IValidatedRequest<TCreateTransaction>;
-      const data = await this.transactionService.create(validatedData);
+      await this.transactionService.create(validatedData);
 
-      res.status(200).json({
-        ...data
+      res.status(201).json({
+        message: 'Transaction created'
       });
     } catch (e) {
       next(e);
     }
   };
-  
+
   public getTransaction = async (
     req: Request,
     res: Response,
@@ -53,14 +45,13 @@ export default class TransactionController implements ITransactionController {
       const data = await this.transactionService.getTransaction(validatedData);
 
       res.status(200).json({
-        ...data
+        ...data,
       });
     } catch (e) {
       next(e);
     }
   };
 
-  
   public getTransactions = async (
     req: Request,
     res: Response,
@@ -70,7 +61,7 @@ export default class TransactionController implements ITransactionController {
       const data = await this.transactionService.getTransactions();
 
       res.status(200).json({
-        ...data
+        ...data,
       });
     } catch (e) {
       next(e);

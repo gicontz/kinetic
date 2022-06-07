@@ -36,6 +36,7 @@ export default class TransactionRouter implements ITransactionRouter {
   private initRoutes = () => {
     this.router.post(
       `${this.path}`,
+      this.transactionValidator.create,
       this.transactionController.create,
     );
 
@@ -45,9 +46,6 @@ export default class TransactionRouter implements ITransactionRouter {
       this.transactionController.getTransaction,
     );
 
-    this.router.get(
-      `${this.path}`,
-      this.transactionController.getTransactions,
-    );
+    this.router.get(`${this.path}`, this.transactionController.getTransactions);
   };
 }

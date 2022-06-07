@@ -12,7 +12,7 @@ import TransactionRouter from '@apis/transaction/Transaction.router';
 import TransactionValidator from '@apis/transaction/Transaction.validator';
 import TransactionController from '@apis/transaction/Transaction.controller';
 import TransactionService from '@apis/transaction/Transaction.service';
-import TransactionDao from '@daos/transaction/Trandaction.dao';
+import TransactionDao from '@daos/transaction/Transaction.dao';
 
 export default (iocContainer: Container) => {
   iocContainer
@@ -28,6 +28,6 @@ export default (iocContainer: Container) => {
     .bind<ITransactionService>(TRANSACTION_TYPES.iTransactionService)
     .to(TransactionService);
   iocContainer
-  .bind<ITransactionDao>(TRANSACTION_TYPES.iTransactionDao)
-  .to(TransactionDao);
+    .bind<ITransactionDao>(TRANSACTION_TYPES.iTransactionDao)
+    .to(TransactionDao);
 };

@@ -1,7 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
 import {
-  ITransaction, TCreateTransaction, TGetTransaction
+  ITransaction,
+  TCreateTransaction,
+  TGetTransaction,
 } from './Transaction.data';
 
 export const TRANSACTION_TYPES = {
@@ -18,21 +20,21 @@ export interface ITransactionRouter {
 }
 
 export interface ITransactionValidator {
-  create: (
+  create: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+  getTransaction: (
     req: Request,
     res: Response,
     next: NextFunction,
   ) => Promise<void>;
-  getTransaction: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 }
 
 export interface ITransactionController {
-  create: (
+  create: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+  getTransaction: (
     req: Request,
     res: Response,
     next: NextFunction,
   ) => Promise<void>;
-  getTransaction: (req: Request, res: Response, next: NextFunction) => Promise<void>;
   getTransactions: (
     req: Request,
     res: Response,
