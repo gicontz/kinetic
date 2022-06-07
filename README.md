@@ -4,6 +4,10 @@
 yarn
 
 ## Start
+- Copy .env.sample
+```
+cp .env.sample .env
+```
 
 - start Mongo
 ```
@@ -13,6 +17,8 @@ mongod
 ```
 yarn start
 ```
+
+Open App at http://localhost:5001/docs
 
 ## Build
 yarn build
