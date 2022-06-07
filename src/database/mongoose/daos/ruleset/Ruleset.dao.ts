@@ -32,7 +32,6 @@ export default class RulesetDao implements IRulesetDao {
   
   public update = async (data: TUpdateRuleSet) => {
     const { rulesetId } = data;
-    console.log(data);
     await Ruleset.findByIdAndUpdate(rulesetId, data).exec();
   };
 
